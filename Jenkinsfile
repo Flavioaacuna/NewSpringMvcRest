@@ -8,6 +8,9 @@ pipeline {
             
             }
         } 
+        stage('SCM') {
+            checkout scm
+        }
         stage("Publish to Nexus Repository Manager") {
             steps {
                 script {
