@@ -9,9 +9,9 @@ pipeline {
             }
         } 
        stage('SonarQube Analysis') {
-            def scannerHome = tool 'Sonarqube';
+            def scannerHome = tool 'sonarqube';
             withSonarQubeEnv() {
-                 sh "${scannerHome}/bin/sonar-scanner"
+                 sh "${scannerHome}/var/jenkins_home/sonar-scanner-4.8.0.2856-linux"
          }
         }
         stage("Publish to Nexus Repository Manager") {
