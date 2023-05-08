@@ -4,16 +4,14 @@ pipeline {
          
         stage('Test') {
             steps {
-                 sh "mvn clean package" 
-            
+                 sh "mvn clean verify sonar:sonar \
+  -Dsonar.projectKey=Sonar-jenkins \
+  -Dsonar.projectName='Sonar-jenkins' \
+  -Dsonar.host.url=http://172.22.125.228:9000 \
+  -Dsonar.token=sqp_a732c6fc7dd59e223310557619ae5fbb121f8bd6" 
             }
         } 
-       stage('SonarQube Analysis') {
-            def scannerHome = tool 'sonarqube';
-            withSonarQubeEnv() {
-                 sh "${scannerHome}/var/jenkins_home/sonar-scanner-4.8.0.2856-linux"
-         }
-        }
+      
         stage("Publish to Nexus Repository Manager") {
             steps {
                 script {
