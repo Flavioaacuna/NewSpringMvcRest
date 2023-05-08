@@ -5,10 +5,10 @@ pipeline {
         stage('Test') {
             steps {
                  sh "mvn clean verify sonar:sonar \
-  -Dsonar.projectKey=Sonar-jenkins \
-  -Dsonar.projectName='Sonar-jenkins' \
-  -Dsonar.host.url=http://172.22.125.228:9000 \
-  -Dsonar.token=sqp_a732c6fc7dd59e223310557619ae5fbb121f8bd6" 
+                 -Dsonar.projectKey=Sonar-jenkins \
+                 -Dsonar.projectName='Sonar-jenkins' \
+                 -Dsonar.host.url=http://172.22.125.228:9000 \
+                 -Dsonar.token=sqp_a732c6fc7dd59e223310557619ae5fbb121f8bd6" 
             }
         } 
       
