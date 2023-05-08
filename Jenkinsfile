@@ -40,14 +40,14 @@ pipeline {
                 }
             }
         stage('SCM') {
-            checkout scm
-         }
-        stage('SonarQube Analysis') {
-            def scannerHome = tool 'SonarScanner';
-            withSonarQubeEnv() {
-                 sh "${scannerHome}/bin/sonar-scanner"
-         }
-        }
+    checkout scm
+  }
+  stage('SonarQube Analysis') {
+    def mvn = tool 'Default Maven';
+    withSonarQubeEnv() {
+      sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=Sonar-jenkins -Dsonar.projectName='Sonar-jenkins'"
+    }
+  }
         } 
         
         }
