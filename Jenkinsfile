@@ -7,7 +7,7 @@ pipeline {
                  sh "mvn clean verify sonar:sonar \
                  -Dsonar.projectKey=Sonar-jenkins \
                  -Dsonar.projectName='Sonar-jenkins' \
-                 -Dsonar.host.url=http://172.22.125.228:9000 \
+                 -Dsonar.host.url=http://172.22.134.190:9000 \
                  -Dsonar.token=sqp_a732c6fc7dd59e223310557619ae5fbb121f8bd6" 
             }
         } 
@@ -25,7 +25,7 @@ pipeline {
                         nexusArtifactUploader(
                             nexusVersion: "nexus3",
                             protocol: "http",
-                            nexusUrl: " 172.28.70.109:8081",
+                            nexusUrl: " 172.22.134.190:8081",
                             groupId: pom.groupId,
                             version: pom.version,
                             repository: "Host",
