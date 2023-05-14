@@ -7,6 +7,16 @@ pipeline {
                  sh "mvn clean install"
             }
         } 
+         stage('test'){
+             steps {
+                 sh "sonar:sonar \
+                 -Dsonar.projectKey=Sonar-jenkins \
+                 -Dsonar.projectName='Sonar-jenkins' \
+                 -Dsonar.host.url=http://172.20.212.68:9000 \
+                 -Dsonar.token=sqp_a732c6fc7dd59e223310557619ae5fbb121f8bd6" 
+             }
+         }
+            
         stage("Publish to Nexus Repository Manager") {
             steps {
                 script {
