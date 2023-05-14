@@ -7,15 +7,22 @@ pipeline {
                  sh "mvn clean install"
             }
         } 
-         stage('test'){
-             steps {
-                 sh "sonar:sonar \
-                 -Dsonar.projectKey=Sonar-jenkins \
-                 -Dsonar.projectName='Sonar-jenkins' \
-                 -Dsonar.host.url=http://172.20.212.68:9000 \
-                 -Dsonar.token=sqp_a732c6fc7dd59e223310557619ae5fbb121f8bd6" 
-             }
-         }
+         stage('SonarQube analysis') {
+            environment {
+            SCANNER_HOME = tool 'sonarqube'
+        }
+                steps {
+                withSonarQubeEnv(credentialsId: 'Sonar', installationName: 'Sonarqube') {
+                sh '''$SCANNER_HOME/bin/sonar-scanner \
+                -Dsonar.projectKey=projectKey \
+                -Dsonar.projectName=ProyectoGrupo3\
+                -Dsonar.sources=src/ \
+                -Dsonar.java.binaries=target/classes/ \
+                -Dsonar.exclusions=src/test/java/****/*.java \
+                -Dsonar.projectVersion=${BUILD_NUMBER}-${GIT_COMMIT_SHORT}'''
+        }
+    }
+}
             
         stage("Publish to Nexus Repository Manager") {
             steps {
