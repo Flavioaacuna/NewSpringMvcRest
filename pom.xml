@@ -2,10 +2,10 @@
 <project xmlns="https://maven.apache.org/POM/4.0.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.journaldev</groupId>
-	<artifactId>SpringRestExample</artifactId>
-	<name>SpringRestExample</name>
+	<artifactId>Modulo3</artifactId>
+	<name>Modulo3</name>
 	<packaging>war</packaging>
-	  <version>1.0</version>	
+	  <version>1.1</version>	
 	<properties>
 		<org.springframework-version>4.0.0.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.7.4</org.aspectj-version>
