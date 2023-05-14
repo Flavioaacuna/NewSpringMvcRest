@@ -15,7 +15,7 @@ pipeline {
                 withSonarQubeEnv(credentialsId: 'Sonar', installationName: 'Sonarqube') {
                 sh '''$SCANNER_HOME/bin/sonar-scanner \
                 -Dsonar.projectKey=projectKey \
-                -Dsonar.projectName=ProyectoGrupo3\
+                -Dsonar.projectName=Modulo3L6\
                 -Dsonar.sources=src/ \
                 -Dsonar.java.binaries=target/classes/ \
                 -Dsonar.exclusions=src/test/java/****/*.java \
