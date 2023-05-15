@@ -45,7 +45,7 @@ pipeline {
                             nexusUrl: "172.20.212.68:8081",
                             groupId: pom.groupId,
                             version: pom.version,
-                            repository: "Host1",
+                            repository: "Host",
                             credentialsId: "pass1",
                             artifacts: [
                                 [artifactId: pom.artifactId,
