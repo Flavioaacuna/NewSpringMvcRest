@@ -72,7 +72,7 @@ pipeline {
 
 def custom_msg()
 {
-def USERNAME = "Jenkins"
+def USERNAME = "FlavioAcuna"
 def JENKINS_URL= "192.168.23.60:8080"
 def JOB_NAME = env.JOB_NAME
 def BUILD_ID= env.BUILD_ID
