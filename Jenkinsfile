@@ -8,14 +8,6 @@ pipeline {
         }
 }
 
-    stage('build user') {
-      steps {
-        wrap([$class: 'BuildUser']) {
-          sh 'echo "${BUILD_USER}"'
-        }
-      }
-    }
-  
             stage('SonarQube analysis') {
             environment {
             SCANNER_HOME = tool 'sonarqube'
@@ -72,7 +64,7 @@ pipeline {
     post{
         always{
                
-            slackSend( channel: "#notificaciones-desde-jenkins", token: "slack trabajo grupal", color: "good", username: "Admin", message: "${custom_msg()}")
+            slackSend( channel: "#notificaciones-desde-jenkins", token: "slack trabajo grupal", color: "good", username, message: "${custom_msg()}")
             }
     }
 }
@@ -80,6 +72,7 @@ pipeline {
 
 def custom_msg()
 {
+def username = 'Jenkins'
 def JENKINS_URL= "192.168.23.60:8080"
 def JOB_NAME = env.JOB_NAME
 def BUILD_ID= env.BUILD_ID
