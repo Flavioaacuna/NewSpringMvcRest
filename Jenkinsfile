@@ -1,4 +1,9 @@
 pipeline {
+      environment {
+        SLACK_CHANNEL = "#fundamentos-de-devops"
+        SLACK_TEAM_DOMAIN = "Sustantiva"
+        SLACK_TOKEN = credentials("Token-Slack")
+    }
     agent any
         stages {
          
@@ -94,7 +99,7 @@ pipeline {
 
 def custom_msg()
 {
-def JENKINS_URL= "172.23.154.175:8080"
+def JENKINS_URL= "172.20.212.68:8080"
 def JOB_NAME = env.JOB_NAME
 def BUILD_ID= env.BUILD_ID
 def JENKINS_LOG= " FAILED: Job [${env.JOB_NAME}] Logs path: ${JENKINS_URL}/job/${JOB_NAME}/${BUILD_ID}/The current Pipeline or stage run has a <failed> status"
