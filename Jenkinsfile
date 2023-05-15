@@ -104,3 +104,4 @@ def JOB_NAME = env.JOB_NAME
 def BUILD_ID= env.BUILD_ID
 def JENKINS_LOG= " FAILED: Job [${env.JOB_NAME}] Logs path: ${JENKINS_URL}/job/${JOB_NAME}/${BUILD_ID}/The current Pipeline or stage run has a <failed> status"
 return JENKINS_LOG
+}
