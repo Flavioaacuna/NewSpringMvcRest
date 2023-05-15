@@ -9,7 +9,7 @@ pipeline {
         } 
          stage('SonarQube analysis') {
             environment {
-            SCANNER_HOME = tool 'sonarqube'
+            SCANNER_HOME = tool 'sonarqube1'
         }
                 steps {
                 withSonarQubeEnv(credentialsId: 'Sonar', installationName: 'Sonarqube') {
@@ -40,7 +40,7 @@ pipeline {
                             nexusUrl: "172.20.212.68:8081",
                             groupId: pom.groupId,
                             version: pom.version,
-                            repository: "Host",
+                            repository: "Host1",
                             credentialsId: "pass1",
                             artifacts: [
                                 [artifactId: pom.artifactId,
