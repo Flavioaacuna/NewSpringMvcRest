@@ -70,6 +70,8 @@ pipeline {
              
              slackSend( channel: "#fundamentos-de-devops", token: "slack trabajo grupal", color: "good", message: "${custom_msg()}")
 }
+     }
+}
 def custom_msg()
 {
 def JENKINS_URL= "172.20.212.68:8080"
