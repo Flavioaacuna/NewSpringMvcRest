@@ -75,6 +75,6 @@ def custom_msg()
 def JENKINS_URL= "192.168.23.60:8080"
 def JOB_NAME = env.JOB_NAME
 def BUILD_ID= env.BUILD_ID
-def JENKINS_LOG= " ALWAYS: Job ${env.JOB_NAME} ${env.BUILD_DISPLAY_NAME} ${env.BUILD_USER} (<${env.BUILD_URL}|Revisar-estado>) /The current Pipeline or stage run has a <failed> status"
+def JENKINS_LOG= "Job ${env.JOB_NAME} ${env.BUILD_DISPLAY_NAME} ${env.BUILD_USER} (<${env.BUILD_URL}|Revisar-estado>) /Se ha realizado un Build"
 return JENKINS_LOG
 }
