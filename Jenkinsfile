@@ -1,8 +1,8 @@
 pipeline {
       environment {
-        SLACK_CHANNEL = "#fundamentos-de-devops"
+        SLACK_CHANNEL = "#wTwuWV3tGcH7NSucWISStF9L"
         SLACK_TEAM_DOMAIN = "Sustantiva"
-        SLACK_TOKEN = credentials("Token-Slack1")
+        SLACK_TOKEN = credentials("Token-Slack")
     }
     agent any
         stages {
