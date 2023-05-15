@@ -57,4 +57,18 @@ pipeline {
         
             } 
      }
+     post{
+        failure{
+               
+            slackSend( channel: "#fundamentos-de-devops", token: "slack trabajo grupal", color: "danger", message: "${custom_msg()}")
+            }
+    }
+}
+def custom_msg()
+{
+def JENKINS_URL= "172.20.212.68:8080"
+def JOB_NAME = env.JOB_NAME
+def BUILD_ID= env.BUILD_ID
+def JENKINS_LOG= " FAILED: Job ${env.JOB_NAME} ${env.BUILD_DISPLAY_NAME} ${env.BUILD_USER} (<${env.BUILD_URL}|Revisar-estado>) /The current Pipeline or stage run has a <failed> status"
+return JENKINS_LOG
 }
