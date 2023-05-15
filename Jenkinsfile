@@ -76,6 +76,6 @@ def USERNAME = "Jenkins"
 def JENKINS_URL= "192.168.23.60:8080"
 def JOB_NAME = env.JOB_NAME
 def BUILD_ID= env.BUILD_ID
-        def JENKINS_LOG= "Se ha realizado un Build: ${env.JOB_NAME} ${env.BUILD_DISPLAY_NAME} ${env.USERNAME} (<${env.BUILD_URL}|Revisar-estado>)"
+        def JENKINS_LOG= "Se ha realizado un Build: ${env.JOB_NAME} ${env.BUILD_DISPLAY_NAME} ${USERNAME} (<${env.BUILD_URL}|Revisar-estado>)"
 return JENKINS_LOG
 }
