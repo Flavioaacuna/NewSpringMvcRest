@@ -57,19 +57,45 @@ pipeline {
         
             } 
      }
-     post{
-        failure{
-               
-            slackSend( channel: "#fundamentos-de-devops", token: "Token-Slack", color: "danger", message: "${custom_msg()}")
-            }
-       
-     }
+    post {
+        always {
+                slackSend message:"Regardless of the completion status of the Pipeline or stage run - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+        }            
+        changed {
+                slackSend message:"the current Pipeline run has a different completion status from its previous run - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+        }            
+        fixed {
+                slackSend message:"The current Pipeline run is successful and the previous run failed or was unstable - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+        }            
+        regression {
+                slackSend message:"The current Pipeline or status is failure, unstable, or aborted and the previous run was successful - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+        }            
+        aborted {
+                slackSend message:"The current Pipeline run has an <aborted> status was successful - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+        }            
+        failure {
+                slackSend message:"The current Pipeline or stage run has a <failed> status  - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+        }
+        success {
+                slackSend message:"The current Pipeline or stage run has a <success> status - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+        }            
+        unstable {
+                slackSend message:"The current Pipeline run has an <unstable> status - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+        }            
+        unsuccessful {
+                slackSend message:"The current Pipeline or stage run has not a <success> status - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+        }            
+        cleanup {
+                slackSend message:"Every other post condition has been evaluated - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+        }            
+    }
 }
+
+
 def custom_msg()
 {
-def JENKINS_URL= "172.20.212.68:8080"
+def JENKINS_URL= "172.23.154.175:8080"
 def JOB_NAME = env.JOB_NAME
 def BUILD_ID= env.BUILD_ID
-def JENKINS_LOG= "FAILED: Job ${env.JOB_NAME} ${env.BUILD_DISPLAY_NAME} ${env.BUILD_USER} (<${env.BUILD_URL}|Revisar-estado>) /The current Pipeline or stage run has a <failed> status"
+def JENKINS_LOG= " FAILED: Job [${env.JOB_NAME}] Logs path: ${JENKINS_URL}/job/${JOB_NAME}/${BUILD_ID}/The current Pipeline or stage run has a <failed> status"
 return JENKINS_LOG
-}
