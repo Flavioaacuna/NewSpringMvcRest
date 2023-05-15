@@ -7,7 +7,7 @@ pipeline {
 
         }
 }
-stages {
+
     stage('build user') {
       steps {
         wrap([$class: 'BuildUser']) {
@@ -15,7 +15,7 @@ stages {
         }
       }
     }
-  }
+  
             stage('SonarQube analysis') {
             environment {
             SCANNER_HOME = tool 'sonarqube'
