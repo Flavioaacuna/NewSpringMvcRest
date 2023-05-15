@@ -1,6 +1,6 @@
 pipeline {
       environment {
-        SLACK_CHANNEL = "#wTwuWV3tGcH7NSucWISStF9L"
+        SLACK_CHANNEL = "#modulo3leccion7"
         SLACK_TEAM_DOMAIN = "Sustantiva"
         SLACK_TOKEN = credentials("Token-Slack")
     }
