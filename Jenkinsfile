@@ -62,7 +62,13 @@ pipeline {
                
             slackSend( channel: "#fundamentos-de-devops", token: "slack trabajo grupal", color: "danger", message: "${custom_msg()}")
             }
+         always {
+          
+             slackSend( channel: "#fundamentos-de-devops", token: "slack trabajo grupal", color: "goog", message: "${custom_msg()}")
     }
+         success {
+             
+             slackSend( channel: "#fundamentos-de-devops", token: "slack trabajo grupal", color: "good", message: "${custom_msg()}")
 }
 def custom_msg()
 {
