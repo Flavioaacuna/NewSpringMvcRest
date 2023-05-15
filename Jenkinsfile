@@ -7,7 +7,15 @@ pipeline {
 
         }
 }
-
+stages {
+    stage('build user') {
+      steps {
+        wrap([$class: 'BuildUser']) {
+          sh 'echo "${BUILD_USER}"'
+        }
+      }
+    }
+  }
             stage('SonarQube analysis') {
             environment {
             SCANNER_HOME = tool 'sonarqube'
