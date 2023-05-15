@@ -62,14 +62,7 @@ pipeline {
                
             slackSend( channel: "#fundamentos-de-devops", token: "Token-Slack", color: "danger", message: "${custom_msg()}")
             }
-         always {
-          
-             slackSend( channel: "#fundamentos-de-devops", token: "Token-Slack", color: "good", message: "${custom_msg()}")
-    }
-         success {
-             
-             slackSend( channel: "#fundamentos-de-devops", token: "Token-Slack", color: "good", message: "${custom_msg()}")
-}
+       
      }
 }
 def custom_msg()
