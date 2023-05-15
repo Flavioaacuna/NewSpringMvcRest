@@ -64,7 +64,7 @@ pipeline {
     post{
         always{
                
-            slackSend( channel: "#notificaciones-desde-jenkins", token: "slack trabajo grupal", color: "good", message: "${custom_msg()}")
+            slackSend( channel: "#notificaciones-desde-jenkins", token: "slack trabajo grupal", color: "good", username: "Admin", message: "${custom_msg()}")
             }
     }
 }
